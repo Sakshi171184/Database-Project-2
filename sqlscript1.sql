@@ -25,3 +25,9 @@ LANGUAGE plpgsql;
 CREATE TRIGGER checkingdata1 BEFORE INSERT OR UPDATE
 ON Customer
 FOR EACH ROW EXECUTE PROCEDURE validatedata1();
+ALTER TABLE Customer
+ADD CreationTime timestamp default current_timestamp;
+ALTER TABLE Customer
+ADD LastUpdatedTime timestamp default current_timestamp;
+CREATE TRIGGER LastUpdatedTimeTrigger BEFORE UPDATE 
+ ON Customer FOR EACH ROW EXECUTE PROCEDURE LastUpdatedTime();
