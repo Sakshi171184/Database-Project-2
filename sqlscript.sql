@@ -38,3 +38,9 @@ LANGUAGE plpgsql;
 CREATE TRIGGER checkingdata BEFORE INSERT OR UPDATE
 ON Employee
 FOR EACH ROW EXECUTE PROCEDURE validatedata();
+ALTER TABLE Employee
+ADD CreationTime timestamp default current_timestamp;
+ALTER TABLE Employee
+ADD LastUpdatedTime timestamp default current_timestamp;
+CREATE TRIGGER LastUpdatedTimeTrigger BEFORE UPDATE 
+ ON Employee FOR EACH ROW EXECUTE PROCEDURE LastUpdatedTime();
