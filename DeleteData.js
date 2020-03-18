@@ -1,4 +1,5 @@
 "use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
 const newfile_1 = require("./newfile");
 class cancel {
